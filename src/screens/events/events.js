@@ -6,23 +6,34 @@ import { fetchFeed } from '../../api/api'
 import { EventCard, SearchBar } from './components';
 
 class Events extends Component {
+  state = {
+    events: [],
+  }
   static navigationOptions = {
     header: null,
     };
 
-  async componentDidMount() {
-    
+  componentDidMount() {
+    this.fetchEvents()
+  }
+
+  fetchEvents = async () => {
+    const data = await fetchFeed();
+    console.log(data);
+    this.setState({ events: data });
+
   }
   render() {
     const { navigation } = this.props
+    const { events } = this.state
     return (
       <View style={{flex: 1}}>
           <SearchBar navigation={navigation}/>
           <ScrollView>
-            <EventCard i={1} />
-            <EventCard i={2}/>
-            <EventCard i={3}/>
-            <EventCard i={4}/>
+            {events.map(item => (
+            <EventCard i={1} key={item.id} event={item}/>
+
+            ))}
           </ScrollView>
       </View>
     )

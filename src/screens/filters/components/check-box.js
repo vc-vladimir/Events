@@ -12,13 +12,13 @@ class EventCheckBox extends Component {
 
   render() {
     const { isActive } = this.state;
-    const { name } = this.props;
+    const { title } = this.props;
     return(
 
-      <ListItem onPress={() => this.toggleCheckbox(name)}>
-        <CheckBox checked={isActive} onPress={() => this.toggleCheckbox(name)} />
+      <ListItem onPress={() => this.toggleCheckbox(title)}>
+        <CheckBox checked={isActive} onPress={() => this.toggleCheckbox(title)} />
         <Body>
-          <Text>{ name }</Text>
+          <Text>{ title }</Text>
         </Body>
       </ListItem>
     )
@@ -26,7 +26,7 @@ class EventCheckBox extends Component {
 }
 
 EventCheckBox.defaultProps = {
-  name: 'Daily Stand Up'
+  title: 'Daily Stand Up'
 }
 
 export default EventCheckBox;

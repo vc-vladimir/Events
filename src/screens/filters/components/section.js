@@ -14,18 +14,19 @@ export default class ListItemNoIndentExample extends Component {
   sectionHandle = () => this.setState({isActive: !this.state.isActive})
   render() {
     const { isActive } = this.state;
+    const { item } = this.props;
     return (
         <View>
           <ListItem itemDivider onPress={() => this.sectionHandle()}>
             <Left>
-              <Text>Mignolet</Text>
+              <Text>{item.title}</Text>
             </Left>
             <Right>
               {isActive ? <Icon name="arrow-down" /> : <Icon name="arrow-forward" />}
             </Right>
           </ListItem> 
-          {isActive && test.map(item => (
-          <EventCheckBox key={item}/>
+          {isActive && item.values.map(item => (
+          <EventCheckBox key={item.id} title={item.title}/>
           ))}   
         </View>
     );

@@ -15,17 +15,18 @@ export default class ListItem extends Component {
   }
 
   render() {
+    const {facets} = this.props;
+    console.log(facets, 'facets')
     return (
       <List>
         <ScrollView>
-          <EventSearch />
+
           <EventDatePicker />
-          <Secation />
-          <Secation />
-          <Secation />
-          <Secation />
-          <Secation />
-          <Secation />
+          {facets.map(item => (
+            <Secation key={item.id} item={item}/>
+          ))}
+          
+ 
           <FromTo />
         </ScrollView>
       </List>
