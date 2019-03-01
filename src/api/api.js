@@ -50,13 +50,12 @@ const fetchFacets = async () => {
 }
 
 const fetchFeed = async () => {
-  const data = await axios.get(`${url}${'dev-token'}/feed`, {
+  const {data} = await axios.get(`${url}${'dev-token'}/fetch`, {
     params: {
-      withFacets: true
+      pretty: true
     }
   })
-
-  return feedMockData;
+  return data;
   
 }
 export {

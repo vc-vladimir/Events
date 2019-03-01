@@ -20,7 +20,7 @@ class Events extends Component {
   fetchEvents = async () => {
     const data = await fetchFeed();
     console.log(data);
-    this.setState({ events: data });
+    this.setState({ events: data.items });
 
   }
   render() {
@@ -30,8 +30,8 @@ class Events extends Component {
       <View style={{flex: 1}}>
           <SearchBar navigation={navigation}/>
           <ScrollView>
-            {events.map(item => (
-            <EventCard i={1} key={item.id} event={item}/>
+            {events.map((item, i) => (
+            <EventCard i={i} key={item.id} event={item}/>
 
             ))}
           </ScrollView>
