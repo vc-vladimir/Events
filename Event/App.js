@@ -9,6 +9,8 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+
+import { getUserAccount, fetchFeed } from './src/api/api'
 import Navigation from './src/navigation';
 import { Events } from './src/screens'
  
@@ -21,6 +23,10 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+   async componentWillMount() {
+    await getUserAccount();
+    await fetchFeed()
+  }
   render() {
     return (
       <View style={{flex: 1}}>

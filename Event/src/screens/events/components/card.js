@@ -3,13 +3,12 @@ import { Image } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right, Title } from 'native-base';
 export default class EventCard extends Component {
   render() {
+    const {i} = this.props;
     return (
-      <Container>
-        <Content>
           <Card>
           <CardItem>
               <Left>
-                <Thumbnail source={{uri: 'https://picsum.photos/703'}} />
+                <Thumbnail source={{uri: `${'https://picsum.photos/70'}${i}`}} />
                 <Body>
                   <Text style={{fontWeight: 'bold'}}>Event Name</Text>
                   <Text note>Library Name</Text>
@@ -17,7 +16,7 @@ export default class EventCard extends Component {
               </Left>
             </CardItem>
             <CardItem cardBody>
-              <Image source={{uri: 'https://picsum.photos/702'}} style={{height: 200, width: null, flex: 1}}/>
+              <Image source={{uri: `${'https://picsum.photos/70'}${i}`}} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
             <CardItem>
               <Left>
@@ -37,8 +36,6 @@ export default class EventCard extends Component {
               </Right>
             </CardItem>
           </Card>
-        </Content>
-      </Container>
     );
   }
 }
